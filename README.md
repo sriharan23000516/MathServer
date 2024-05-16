@@ -1,5 +1,5 @@
 # Ex.05 Design a Website for Server Side Processing
-## Date: 7-05-24
+## Date: 10.05.2024
 
 ## AIM:
 To design a website to find surface area of a Right Cylinder in server side.
@@ -30,9 +30,8 @@ Create a HTML file to implement form based input and output.
 Publish the website in the given URL.
 
 ## PROGRAM :
- ```
- math.html
- <!DOCTYPE html>
+```
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8'>
@@ -41,7 +40,7 @@ Publish the website in the given URL.
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <style type="text/css">
 body {
-    background-color: rgb(102, 224, 175);
+    background-color: rgb(0, 2, 0);
 }
 .edge {
     width: 100%;
@@ -50,29 +49,29 @@ body {
 }
 .box {
     display: inline-block;
-    border: thick dashed rgb(190, 109, 188);
+    border: thick dashed rgb(235, 0, 4);
     width: 500px;
     min-height: 300px;
     font-size: 20px;
-    background-color: rgb(211, 27, 27);
+    background-color: rgb(198, 247, 6);
 }
 .formelt {
-    color:white;
+    color: black;
     text-align: center;
     margin-top: 7px;
     margin-bottom: 6px;
 }
 h1 {
-    color: white;
+    color: black;
     padding-top: 20px;
 }
 </style>
 </head>
-<h2><center><font color="red">BEATRICE THOMAS (212223110005)</font></center></h2> 
 <body>
 <div class="edge">
     <div class="box">
-        <h1>Surface Area of Right Cylinder</h1>
+        <h1>Surfacearea of Right Cylinder</h1>
+        <h3>SRIHARAN J V(212223240032)</h3>
         <form method="POST">
             {% csrf_token %}
             <div class="formelt">
@@ -92,60 +91,49 @@ h1 {
 </div>
 </body>
 </html>
+```
 
-views.py
+```
 from django.shortcuts import render
-
-def surfaceareaofrightcylinder(request):
+def surfacearea(request):
     context = {}
     context['area'] = "0"
     context['r'] = "0"
     context['h'] = "0"
-    
     if request.method == 'POST':
         print("POST method is used")
-        
         print('request.POST:', request.POST)
-        
         r = request.POST.get('radius', '0') 
         h = request.POST.get('height', '0') 
         print('radius =', r)
         print('height =', h)
-        
         area = 2 * 3.14 * int(r) * int(h) + 2*3.14*int(r)*int(r)
         context['area'] = area
         context['r'] = r
         context['h'] = h
         print('Area =', area)
     
-    return render(request, 'mathapp/math.html', context)
+    return render(request, 'mathapp/math.html',context)
 
+```
 
-urls.py
-
+```
 from django.contrib import admin
 from django.urls import path
 from mathapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('surfaceareaofrightcylinder/',views.surfaceareaofrightcylinder,name="surfaceareaofrightcylinder"),
-    path('',views.surfaceareaofrightcylinder,name="surfaceareaofrightcylinderroot")
+    path('surfacearea/',views.surfacearea,name="surfacearea"),
+    path('',views.surfacearea,name="surfcaearea")
 ]
 
-
 ```
-
-
 ## SERVER SIDE PROCESSING:
-
-![image](https://github.com/sriharan23000516/MathServer/assets/139841769/fd6f0147-328e-4565-b820-78d0738abf05)
-
+![329913034-cc9b40eb-12d1-41c0-b0d3-1d1562658af9](https://github.com/sriharan23000516/MathServer/assets/139841769/bed38ae7-ccda-49a0-bf89-307528e5e123)
 
 
 ## HOMEPAGE:
-
-![image](https://github.com/sriharan23000516/MathServer/assets/139841769/8e1e80aa-2bf6-4b90-827e-04b23a658b12)
-
+![image](https://github.com/sriharan23000516/MathServer/assets/139841769/1f93764f-2c77-4101-88ac-45b1eafbfd87)
 
 
 ## RESULT:
